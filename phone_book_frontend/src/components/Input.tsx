@@ -44,6 +44,7 @@ export default function Input({
   return (
     <div className={error && touched ? 'mb-3' : 'mb-10'}>
       <input
+        autoComplete='off'
         value={value}
         type={type}
         placeholder={placeholder}
@@ -51,7 +52,7 @@ export default function Input({
         name={name}
         className={
           className +
-          ' border border-light-grey-primary placeholder:grey-primary w-full p-4 rounded-lg outline-none ' +
+          ' border bg-white border-light-grey-primary placeholder:grey-primary w-full p-4 rounded-lg outline-none ' +
           (error &&
             touched &&
             ' border-red-primary placeholder:text-red-primary')

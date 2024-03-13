@@ -29,7 +29,7 @@ export default function AddContact({
   contactDetails?: Contact;
 }) {
   return (
-    <div className='w-full h-fit px-4'>
+    <div className='w-full h-fit px-4 min-w-[40vw]'>
       <p className='text-center font-semibold text-xl'>
         {contactDetails ? 'Edit Contact' : 'Add Contact'}
       </p>
@@ -40,7 +40,7 @@ export default function AddContact({
               ? contactDetails
               : { name: '', phoneNo: 0, email: '', tags: '' }
           }
-          onSubmit={(values, { setSubmitting }) => {
+          onSubmit={(values) => {
             onSubmit(values);
           }}
           validationSchema={ContactSchema}

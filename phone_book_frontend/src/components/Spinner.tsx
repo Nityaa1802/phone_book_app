@@ -1,6 +1,6 @@
 export default function Spinner() {
   return (
-    <div className='h-full w-full flex justify-center items-center bg-inherit'>
+    <div className='h-screen w-screen flex justify-center items-center bg-inherit'>
       <span className='loader bg-inherit' />
     </div>
   );
