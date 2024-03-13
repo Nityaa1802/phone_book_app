@@ -12,3 +12,21 @@ export type ContactDetails = {
   email: string;
   tags: string;
 };
+
+export type User = {
+  id: number;
+  firstName: string;
+  lastName: string;
+  phoneNo1: number;
+  phoneNo2: number;
+  email: string;
+  address: string;
+};
+export type UserDetails = {
+  firstName: string;
+  lastName: string;
+  phoneNo1: number;
+  phoneNo2: number;
+  email: string;
+  address: string;
+};

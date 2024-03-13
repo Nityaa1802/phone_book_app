@@ -101,7 +101,7 @@ export default function CustomTable({
   }
 
   async function onAddClick(contactDetails: ContactDetails, id?: number) {
-    if(!id) return
+    if (!id) return;
     try {
       const response = await updateContact(id, contactDetails);
       console.log(response);
@@ -232,7 +232,7 @@ export default function CustomTable({
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[8, 25, 100]}
+        rowsPerPageOptions={[5, 8, 10, 25, 100]}
         component='div'
         count={count}
         rowsPerPage={itemsPerPage}
