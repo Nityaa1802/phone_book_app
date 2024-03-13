@@ -1,7 +1,6 @@
 from django.db import models
 
 class PhoneBook(models.Model):
-    userId=models.IntegerField()
     name = models.CharField(max_length = 100)
     phoneNo = models.CharField(max_length = 10)
     email = models.CharField(max_length = 150)

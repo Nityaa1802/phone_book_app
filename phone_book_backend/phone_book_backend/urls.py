@@ -21,7 +21,9 @@ from PhoneBookApp import views
 
 # fix: urls
 urlpatterns = [
-    re_path(r'^contact$',views.studentApi),
-    re_path(r'^contact/([0-9]+)$',views.studentApi),
+    re_path(r'^contact$',views.phoneBookApi),
+    re_path(r'^contact/([0-9]+)$',views.phoneBookApi),
+    re_path(r'^user$',views.userApi),
+    re_path(r'^user/([0-9]+)$',views.userApi),
     path('admin/', admin.site.urls),
 ]
