@@ -1,5 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
-
 import { useContext } from 'react';
 import { ModalContext } from '../context/modalContext';
 

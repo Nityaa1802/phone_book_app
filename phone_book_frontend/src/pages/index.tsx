@@ -36,7 +36,6 @@ export default function PhoneBook() {
   async function onAddClick(contactDetails: ContactDetails, id?: number) {
     try {
       const response = await addContact(contactDetails);
-      console.log(response);
       if (response.data === 'Added Successfully') {
         toast.success('Contact added successfully');
         setLoading(true);

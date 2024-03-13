@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 import { toast } from 'react-hot-toast';
 
@@ -6,12 +5,6 @@ export const http = axios.create();
 
 http.interceptors.request.use((config: InternalAxiosRequestConfig<any>) => {
   config.baseURL = 'http://127.0.0.1:8000/';
-
-  // config.headers['Content-Type'] = 'application/json'
-  //   const token = localStorage.getItem('token') || '';
-  //   if (token) {
-  //     config.headers.Authorization = 'Token ' + token;
-  //   }
   return config;
 });
 

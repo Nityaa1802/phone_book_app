@@ -14,7 +14,7 @@ import { Contact, ContactDetails } from '../types';
 import { ModalContext } from '../context/modalContext';
 import { useContext } from 'react';
 import DeleteComponent from './DeleteContact';
-import { addContact, deleteContact, updateContact } from '../api/request';
+import {  deleteContact, updateContact } from '../api/request';
 import toast from 'react-hot-toast';
 import AddContact from './AddContact';
 
@@ -42,23 +42,6 @@ const columns: readonly Column[] = [
     align: 'center',
   },
 ];
-
-interface Data {
-  name: string;
-  phoneNo: string;
-  email: string;
-  tags: string;
-}
-
-function createData(
-  name: string,
-  phoneNo: string,
-  email: string,
-  tags: string
-): Data {
-  return { name, phoneNo, email, tags };
-}
-
 export default function CustomTable({
   rows,
   count,
@@ -92,7 +75,6 @@ export default function CustomTable({
   async function removeContact(id: number) {
     try {
       const response = await deleteContact(id);
-      console.log(response);
       if (response.data === 'Deleted Successfully') {
         toast.success('Contact removed successfully');
         setLoading(true);
@@ -104,7 +86,6 @@ export default function CustomTable({
     if (!id) return;
     try {
       const response = await updateContact(id, contactDetails);
-      console.log(response);
       if (response.data === 'Updated Successfully') {
         toast.success('Contact updated successfully');
         setLoading(true);
@@ -121,7 +102,6 @@ export default function CustomTable({
           <TableHead>
             <TableRow>
               <TableCell
-                key={5}
                 align={'right'}
                 style={{
                   minWidth: 10,
@@ -144,7 +124,6 @@ export default function CustomTable({
                 </TableCell>
               ))}
               <TableCell
-                key={5}
                 align={'center'}
                 style={{
                   minWidth: 120,
@@ -156,7 +135,7 @@ export default function CustomTable({
           <TableBody sx={{ overflow: 'hidden', maxHeight: '70%' }}>
             {rows
               .slice(page * itemsPerPage, page * itemsPerPage + itemsPerPage)
-              .map((row, index) => {
+              .map((row) => {
                 return (
                   <TableRow hover role='checkbox' tabIndex={-1} key={row.id}>
                     <TableCell align={'right'}>
@@ -187,7 +166,6 @@ export default function CustomTable({
                       );
                     })}
                     <TableCell
-                      key={6}
                       align='center'
                       sx={{
                         display: 'flex',
