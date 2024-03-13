@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.db.models import Q
 
 # Create your views here.
 from django.views.decorators.csrf import csrf_exempt
@@ -12,18 +12,25 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 def studentApi(request,id=0):
     if request.method=='GET':
         items = request.GET.get('items', 2)
-        student = PhoneBook.objects.all().order_by('name')
-        paginator = Paginator(student, items)      
+        search_name = request.GET.get('search', '').strip()
+        print(search_name)
+        if(search_name):
+              phoneBook = PhoneBook.objects.filter(Q(name__icontains=search_name)).order_by('name')
+              print(phoneBook)
+        else:
+              phoneBook = PhoneBook.objects.all().order_by('name')
+              print(phoneBook)
+        paginator = Paginator(phoneBook, items)      
         page = request.GET.get('page', 1)
 
         try:
-            student_page = paginator.page(page)
+            phoneBook_page = paginator.page(page)
         except PageNotAnInteger:
-            student_page = paginator.page(1)
+            phoneBook_page = paginator.page(1)
         except EmptyPage:
             return JsonResponse({'data': [], 'count': 0})
 
-        student_serializer = PhoneBookSerializer(student_page, many=True)
+        student_serializer = PhoneBookSerializer(phoneBook_page, many=True)
         response_data = {
             'data': student_serializer.data,
             'count': paginator.count
@@ -42,14 +49,14 @@ def studentApi(request,id=0):
     
     elif request.method=='PUT':
         student_data=JSONParser().parse(request)
-        student=PhoneBook.objects.get(id=id)
-        student_serializer=PhoneBookSerializer(student,data=student_data)
+        phoneBook=PhoneBook.objects.get(id=id)
+        student_serializer=PhoneBookSerializer(phoneBook,data=student_data)
         if student_serializer.is_valid():
             student_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
         return JsonResponse("Failed to Update")
     
     elif request.method=='DELETE':
-        student=PhoneBook.objects.get(id=id)
-        student.delete()
+        phoneBook=PhoneBook.objects.get(id=id)
+        phoneBook.delete()
         return JsonResponse("Deleted Successfully",safe=False)
