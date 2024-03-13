@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .loader {
+    position: relative;
+    width: 30px;
+    height: 30px;
+  }
+
+  .loader:before,
+  .loader:after {
+    content: '';
+    border-radius: 50%;
+    position: absolute;
+    inset: 0;
+  }
+  .loader:after {
+    box-shadow: 0 2px 0 #756bf6 inset;
+    animation: rotate 2s linear infinite;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
