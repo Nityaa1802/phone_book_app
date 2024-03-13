@@ -77,16 +77,16 @@ WSGI_APPLICATION = 'phone_book_backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.mysql",
-#         "NAME": "phone_book_app",
-#         "USER": "root",
-#         "PASSWORD": "12345678",
-#         "HOST": "127.0.0.1",
-#         "PORT": "3306",
-#     }
-# }
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "phone_book_app",
+        "USER": "root",
+        "PASSWORD": "12345678",
+        "HOST": "127.0.0.1",
+        "PORT": "3306",
+    }
+}
 
 # DATABASES['default'] = dj_database_url.parse('mysql://root@localhost/phone_book_app')
 
