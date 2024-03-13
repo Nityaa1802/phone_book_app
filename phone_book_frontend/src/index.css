@@ -20,6 +20,10 @@
     box-shadow: 0 2px 0 #756bf6 inset;
     animation: rotate 2s linear infinite;
   }
+
+  .animate-rotate{
+     animation: rotate 1s linear infinite;
+  }
 }
 
 @keyframes rotate {
